@@ -577,13 +577,5 @@ what is happening in the high-level C++ code that you write.
 
 ## Homework 08
 
-Build a repo in Git Classroom by following the Homework 08 link onthe
-syllabus page. These are (probably) the exercises you'll find there:
-
-1. reverse a string
-2. list all the bit palindromes
-3. list all the divisors of an integer
-4. report whether some prefix sum of an array equals the suffix sum
-5. bubble sort a string
-6. update linked list to contain prefix sums
+Here is the direct link to [Homework 08](https://classroom.github.com/a/khWxB8As).
 
