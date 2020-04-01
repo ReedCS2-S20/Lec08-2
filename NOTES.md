@@ -1,5 +1,5 @@
 ## CSCI 221, Spring 2020
-# Lecture 08-2: arrays and linked lists in MIPS
+# Lecture 08-2: memory access in MIPS
 
 ---
 
@@ -27,9 +27,8 @@ A Homework 08 assignment is then assigned.
     II. Using offsets in load/store instructions
      A. LW/SW and LB/SB instructions using an offset
      B. solution to Lecture 08-1 Exercise 2
-     C. insertion sort a string
-     D. offset use in accessing structs
-     A. layout of structs in memory
+     C. offset use in accessing stack frame data
+     D. layout of structs in memory
    III. MIPS linked lists
      B. making linked list nodes in MIPS .data
      C. making a linked list
@@ -163,27 +162,15 @@ at  `area_ptr`:
 
 The key lines are 
 
-        lw $t3,($s0)      # Fetch an integer from the array.
-        addu $t2,$t2,$t3  # Add it to the sum.
-	addiu $s0,$s0,4   # Advance the pointer by 4 bytes.    
+        lw    $t3,($s0)      # Fetch an integer from the array.
+        addu  $t2,$t2,$t3    # Add it to the sum.
+	addiu $s0,$s0,4      # Advance the pointer by 4 bytes.    
 
 The first line reads an array value at the current location of
 the pointer and the third advances the pointer by 4 byte locations.
 The middle one updates the sum with that fetched value. 
 
-This full code is given as `arraysum.asm` in the `samples` folder
-of this lecture. In that version, the program first asks for how many
-items the user wants to enter, and so it sets $t0 to that length.
-Then the lines that start the countdown of each loop 
-
-     li $t1,5
-
-are each replaced with
-
-     move $t1,$t0
-
-The code also gives an error if the user wants to enter more than 10
-integers, as only 40 bytes of space have been reserved.
+This full code is given as `sum_array.asm` in the `samples` folder.
 
 ### Output the character codes of a string
 
@@ -217,6 +204,8 @@ and we end the loop and exit the program.
 
 The other key part is `addiu $s0,$s0,1`. We advance the pointer by only one
 byte because characters are only one byte long.
+
+This code is a sample named `stringcodes.asm`.
 
 ---
 
